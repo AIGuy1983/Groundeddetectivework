@@ -1,98 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Grounded Detective Work</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
     }
 
     header {
-      background-color: #1f1f1f;
+      background-color: #111;
       padding: 20px;
       text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
+      font-size: 2em;
+      letter-spacing: 2px;
       border-bottom: 2px solid #333;
-      letter-spacing: 1px;
     }
 
     nav {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      background-color: #222;
-      border-bottom: 1px solid #444;
+      background-color: #111;
+      border-bottom: 1px solid #333;
     }
 
-    nav a {
-      color: #bbb;
-      text-decoration: none;
-      padding: 15px 25px;
-      transition: background 0.3s, color 0.3s;
+    nav button {
+      background: none;
+      border: none;
+      color: #aaa;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
-      background-color: #333;
+    nav button:hover,
+    nav button.active {
       color: #fff;
+      border-bottom: 2px solid #fff;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .tab {
+      display: none;
+      padding: 20px;
     }
 
-    h2 {
-      border-bottom: 1px solid #444;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      color: #f0f0f0;
+    .tab.active {
+      display: block;
     }
 
-    p {
-      line-height: 1.6;
-    }
-
-    .tab-content {
-      margin-bottom: 50px;
+    textarea {
+      width: 100%;
+      height: 400px;
+      background: #111;
+      color: #eee;
+      border: 1px solid #444;
+      padding: 10px;
+      font-size: 1em;
+      resize: vertical;
     }
   </style>
 </head>
 <body>
-  <header>
-    Grounded Detective Work
-  </header>
-
+  <header>Grounded Detective Work</header>
   <nav>
-    <a href="#notes">Notes</a>
-    <a href="#theories">Theories</a>
-    <a href="#evidence">Evidence</a>
-    <a href="#dreams">Dreams</a>
+    <button class="tablink active" onclick="showTab('journal')">Journal</button>
+    <button class="tablink" onclick="showTab('dreams')">Dreams</button>
+    <button class="tablink" onclick="showTab('notes')">Notes</button>
+    <button class="tablink" onclick="showTab('cases')">Cases</button>
+    <button class="tablink" onclick="showTab('clues')">Clues</button>
+    <button class="tablink" onclick="showTab('theories')">Theories</button>
+    <button class="tablink" onclick="showTab('people')">People</button>
+    <button class="tablink" onclick="showTab('places')">Places</button>
+    <button class="tablink" onclick="showTab('questions')">Questions</button>
+    <button class="tablink" onclick="showTab('reminders')">Reminders</button>
+    <button class="tablink" onclick="showTab('playlist')">Playlist</button>
+    <button class="tablink" onclick="showTab('resources')">Resources</button>
   </nav>
 
-  <section id="notes" class="tab-content">
-    <h2>Notes</h2>
-    <p>Write down your ideas, questions, and thoughts as they come. Let this be your space for reflection and observation.</p>
-  </section>
+  <div id="journal" class="tab active">
+    <h2>Journal</h2>
+    <textarea placeholder="Write your daily thoughts..."></textarea>
+  </div>
 
-  <section id="theories" class="tab-content">
-    <h2>Theories</h2>
-    <p>Explore all possibilities — even the ones that feel out there. What patterns are emerging? What do your instincts tell you?</p>
-  </section>
-
-  <section id="evidence" class="tab-content">
-    <h2>Evidence</h2>
-    <p>Keep track of what you know for sure — photos, messages, dates, anything that feels important. Let it all live here.</p>
-  </section>
-
-  <section id="dreams" class="tab-content">
+  <div id="dreams" class="tab">
     <h2>Dreams</h2>
-    <p>This is just for you. A safe, quiet space to capture your dreams — the weird ones, the powerful ones, the ones that stick with you. Don’t worry about how it sounds, just let it out.</p>
-  </section>
-</body>
-</html>
+    <textarea placeholder="Record your dreams here..."></textarea>
+  </div>
+
+  <div id="notes" class="tab">
+    <h2>Notes</h2>
+    <textarea placeholder="General notes and ideas..."></textarea>
+  </div>
+
+  <div id="cases" class="tab">
+    <h2>Cases</h2>
+    <textarea placeholder="Ongoing investigations and situations..."></textarea>
+  </div>
+
+  <div id="clues" class="tab">
+    <h2>Clues</h2>
+    <textarea
