@@ -8,92 +8,91 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      border-bottom: 2px solid #333;
+      letter-spacing: 1px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      background-color: #111;
-      border-bottom: 1px solid #333;
+      background-color: #222;
+      border-bottom: 1px solid #444;
     }
 
     nav a {
-      padding: 14px 20px;
+      color: #bbb;
       text-decoration: none;
-      color: #ccc;
-      font-weight: bold;
-      transition: color 0.3s, box-shadow 0.3s;
+      padding: 15px 25px;
+      transition: background 0.3s, color 0.3s;
     }
 
-    nav a:hover, nav a.active {
-      color: #00ffcc;
-      box-shadow: 0 2px 0 0 #00ffcc;
+    nav a:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #f0f0f0;
+    }
+
+    p {
+      line-height: 1.6;
     }
 
     .tab-content {
-      display: none;
-      padding: 30px;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    textarea {
-      width: 100%;
-      height: 300px;
-      background-color: #111;
-      color: #0f0;
-      border: 1px solid #00ffcc;
-      padding: 10px;
-      font-size: 16px;
-      resize: vertical;
-    }
-
-    h1 {
-      text-align: center;
-      color: #00ffcc;
+      margin-bottom: 50px;
     }
   </style>
 </head>
 <body>
-  <h1>Grounded Detective Work</h1>
+  <header>
+    Grounded Detective Work
+  </header>
+
   <nav>
-    <a href="#" class="tab-link active" data-tab="home">Home</a>
-    <a href="#" class="tab-link" data-tab="notes">Notes</a>
-    <a href="#" class="tab-link" data-tab="dreams">Dreams</a>
+    <a href="#notes">Notes</a>
+    <a href="#theories">Theories</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#dreams">Dreams</a>
   </nav>
 
-  <div id="home" class="tab-content active">
-    <p>Welcome to your space — use this to stay grounded, keep track of thoughts, and follow your intuition.</p>
-  </div>
+  <section id="notes" class="tab-content">
+    <h2>Notes</h2>
+    <p>Write down your ideas, questions, and thoughts as they come. Let this be your space for reflection and observation.</p>
+  </section>
 
-  <div id="notes" class="tab-content">
-    <p>Jot down quick notes, ideas, or anything that strikes you.</p>
-    <textarea placeholder="Write your notes here..."></textarea>
-  </div>
+  <section id="theories" class="tab-content">
+    <h2>Theories</h2>
+    <p>Explore all possibilities — even the ones that feel out there. What patterns are emerging? What do your instincts tell you?</p>
+  </section>
 
-  <div id="dreams" class="tab-content">
-    <p>Keep track of your dreams — what did you see? how did you feel?</p>
-    <textarea placeholder="Log your dreams here..."></textarea>
-  </div>
+  <section id="evidence" class="tab-content">
+    <h2>Evidence</h2>
+    <p>Keep track of what you know for sure — photos, messages, dates, anything that feels important. Let it all live here.</p>
+  </section>
 
-  <script>
-    const tabs = document.querySelectorAll('.tab-link');
-    const contents = document.querySelectorAll('.tab-content');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', e => {
-        e.preventDefault();
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
+  <section id="dreams" class="tab-content">
+    <h2>Dreams</h2>
+    <p>This is just for you. A safe, quiet space to capture your dreams — the weird ones, the powerful ones, the ones that stick with you. Don’t worry about how it sounds, just let it out.</p>
+  </section>
 </body>
 </html>
