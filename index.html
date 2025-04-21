@@ -8,7 +8,7 @@
         /* Full screen background */
         body {
             background-image: url('images/Lighthouse.jpg');
-            background-size: fit;
+            background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
             font-family: 'Arial', sans-serif;
@@ -19,7 +19,7 @@
         }
 
         header {
-            background-color: rgba(17, 17, 17, 0.8); /* Less transparent */
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
             text-align: center;
             font-size: 2em;
@@ -31,7 +31,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            background-color: rgba(17, 17, 17, 0.8); /* Less transparent */
+            background-color: rgba(0, 0, 0, 0.6);
             border-bottom: 1px solid #333;
         }
 
@@ -63,13 +63,27 @@
         textarea {
             width: 100%;
             height: 400px;
-            background: rgba(17, 17, 17, 0.8); /* Less transparent */
+            background: #111;
             color: #eee;
             border: 1px solid #444;
             padding: 10px;
             font-size: 1em;
             resize: vertical;
         }
+
+        button {
+            background-color: #444;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        button:hover {
+            background-color: #666;
+        }
+
     </style>
 </head>
 <body>
@@ -77,9 +91,6 @@
     <nav>
         <button class="tablink active" onclick="showTab('journal')">Journal</button>
         <button class="tablink" onclick="showTab('dreams')">Dreams</button>
-	<button class="tablink" onclick="showTab('Tarot Readings')">Tarot Readings</button>
-	<button class="tablink" onclick="showTab('Ancestors')">Ancestors</button>
-	<button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
         <button class="tablink" onclick="showTab('notes')">Notes</button>
         <button class="tablink" onclick="showTab('cases')">Cases</button>
         <button class="tablink" onclick="showTab('clues')">Clues</button>
@@ -90,7 +101,7 @@
         <button class="tablink" onclick="showTab('reminders')">Reminders</button>
         <button class="tablink" onclick="showTab('playlist')">Playlist</button>
         <button class="tablink" onclick="showTab('resources')">Resources</button>
-	<button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
+        <button class="tablink" onclick="showTab('tarot')">Tarot Readings</button> <!-- Added Tarot tab -->
     </nav>
 
     <div id="journal" class="tab active">
@@ -101,21 +112,6 @@
     <div id="dreams" class="tab">
         <h2>Dreams</h2>
         <textarea placeholder="Record your dreams here..."></textarea>
-    </div>
-
-    <div id="Tarot Readings" class="tab">
-        <h2>Tarot Readings</h2>
-        <textarea placeholder="Get you Tarot readings here..."></textarea>
-    </div>
-
-    <div id="Ancestors" class="tab">
-        <h2>Ancestors</h2>
-        <textarea placeholder="Find your Ancestors here..."></textarea>
-    </div>
-
-    <div id="Graveyards" class="tab">
-        <h2>Graveyards</h2>
-        <textarea placeholder="Find a gravesite here..."></textarea>
     </div>
 
     <div id="notes" class="tab">
@@ -168,9 +164,12 @@
         <textarea placeholder="Useful links, books, podcasts, or videos..."></textarea>
     </div>
 
-    <div id="Secret Messages" class="tab">
-        <h2>Secret Messages</h2>
-        <textarea placeholder="Secret Messages"></textarea>
+    <div id="tarot" class="tab">
+        <h2>Tarot Readings</h2>
+        <!-- Tarot reading link -->
+        <a href="https://labyrinthos.co/free-tarot-readings/" target="_blank">
+            <button>Start Your Tarot Reading</button>
+        </a>
     </div>
 
     <script>
@@ -187,4 +186,3 @@
     </script>
 </body>
 </html>
-
