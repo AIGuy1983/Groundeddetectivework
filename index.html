@@ -77,6 +77,9 @@
     <nav>
         <button class="tablink active" onclick="showTab('journal')">Journal</button>
         <button class="tablink" onclick="showTab('dreams')">Dreams</button>
+	<button class="tablink" onclick="showTab('Tarot Readings')">Tarot Readings</button>
+	<button class="tablink" onclick="showTab('Ancestors')">Ancestors</button>
+	<button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
         <button class="tablink" onclick="showTab('notes')">Notes</button>
         <button class="tablink" onclick="showTab('cases')">Cases</button>
         <button class="tablink" onclick="showTab('clues')">Clues</button>
@@ -87,6 +90,7 @@
         <button class="tablink" onclick="showTab('reminders')">Reminders</button>
         <button class="tablink" onclick="showTab('playlist')">Playlist</button>
         <button class="tablink" onclick="showTab('resources')">Resources</button>
+	<button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
     </nav>
 
     <div id="journal" class="tab active">
@@ -97,6 +101,21 @@
     <div id="dreams" class="tab">
         <h2>Dreams</h2>
         <textarea placeholder="Record your dreams here..."></textarea>
+    </div>
+
+    <div id="Tarot Readings" class="tab">
+        <h2>Tarot Readings</h2>
+        <textarea placeholder="Get you Tarot readings here..."></textarea>
+    </div>
+
+    <div id="Ancestors" class="tab">
+        <h2>Ancestors</h2>
+        <textarea placeholder="Find your Ancestors here..."></textarea>
+    </div>
+
+    <div id="Graveyards" class="tab">
+        <h2>Graveyards</h2>
+        <textarea placeholder="Find a gravesite here..."></textarea>
     </div>
 
     <div id="notes" class="tab">
@@ -147,6 +166,11 @@
     <div id="resources" class="tab">
         <h2>Resources</h2>
         <textarea placeholder="Useful links, books, podcasts, or videos..."></textarea>
+    </div>
+
+    <div id="Secret Messages" class="tab">
+        <h2>Secret Messages</h2>
+        <textarea placeholder="Secret Messages"></textarea>
     </div>
 
     <script>
