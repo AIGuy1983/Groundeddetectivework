@@ -213,4 +213,42 @@
         function displayMessages() {
             const messageDisplay = document.getElementById('messageDisplay');
             const messagesRef = database.ref('messages');
-            messagesRef.on('value',
+            messagesRef.on('value', (snapshot) => {
+                const messages = snapshot.val();
+                messageDisplay.innerHTML = "";
+                for (let key in messages) {
+                    const message = messages[key];
+                    const messageDiv = document.createElement('div');
+                    messageDiv.textContent = message.text;
+                    messageDisplay.appendChild(messageDiv);
+                }
+            });
+        }
+
+        // Call displayMessages when the page loads
+        window.onload = function() {
+            displayMessages();
+        };
+
+        // Function to show the corresponding tab
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const tabLinks = document.querySelectorAll('.tablink');
+
+            tabs.forEach((tab) => {
+                tab.classList.remove('active');
+            });
+
+            tabLinks.forEach((button) => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            const activeButton = Array.from(tabLinks).find(button => button.textContent === tabName);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
