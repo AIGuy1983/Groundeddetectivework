@@ -152,17 +152,28 @@
     <textarea placeholder="Useful links, books, podcasts, or videos..."></textarea>
   </div>
 
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.tablink').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
+// Save text to local storage
+        function saveData() {
+            let journalText = document.getElementById('journal-textarea').value;
+            let dreamsText = document.getElementById('dreams-textarea').value;
+            localStorage.setItem('journal', journalText);
+            localStorage.setItem('dreams', dreamsText);
+        }
+
+        // Load saved data from local storage
+        function loadData() {
+            let savedJournal = localStorage.getItem('journal');
+            let savedDreams = localStorage.getItem('dreams');
+            if (savedJournal) document.getElementById('journal-textarea').value = savedJournal;
+            if (savedDreams) document.getElementById('dreams-textarea').value = savedDreams;
+        }
+
+        // Save data whenever there is a change in the textareas
+        document.getElementById('journal-textarea').addEventListener('input', saveData);
+        document.getElementById('dreams-textarea').addEventListener('input', saveData);
+
+        // Load data when the page is loaded
+        window.onload = loadData;
+    </script>
 </body>
 </html>
