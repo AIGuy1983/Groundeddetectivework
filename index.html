@@ -75,9 +75,9 @@
 <body>
     <header>Grounded Detective Work</header>
     <nav>
-        <button class="tablink" onclick="showTab('journal')">Journal</button>
+        <button class="tablink active" onclick="showTab('journal')">Journal</button>
         <button class="tablink" onclick="showTab('dreams')">Dreams</button>
-        <button class="tablink" onclick="openTarotReading()">Tarot Readings</button>
+        <button class="tablink" onclick="showTab('Tarot Readings')">Tarot Readings</button>
         <button class="tablink" onclick="showTab('Ancestors')">Ancestors</button>
         <button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
         <button class="tablink" onclick="showTab('notes')">Notes</button>
@@ -93,38 +93,135 @@
         <button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
     </nav>
 
-    <!-- Journal tab -->
     <div id="journal" class="tab active">
         <h2>Journal</h2>
         <textarea placeholder="Write your daily thoughts..."></textarea>
     </div>
 
-    <!-- Other tabs (no changes here) -->
     <div id="dreams" class="tab">
         <h2>Dreams</h2>
         <textarea placeholder="Record your dreams here..."></textarea>
     </div>
 
-    <!-- More tabs, same as before... -->
+    <div id="Tarot Readings" class="tab">
+        <h2>Tarot Readings</h2>
+        <iframe src="https://www.facade.com/tarot/" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+    </div>
+
+    <div id="Ancestors" class="tab">
+        <h2>Ancestors</h2>
+        <textarea placeholder="Find your Ancestors here..."></textarea>
+    </div>
+
+    <div id="Graveyards" class="tab">
+        <h2>Graveyards</h2>
+        <textarea placeholder="Find a gravesite here..."></textarea>
+    </div>
+
+    <div id="notes" class="tab">
+        <h2>Notes</h2>
+        <textarea placeholder="General notes and ideas..."></textarea>
+    </div>
+
+    <div id="cases" class="tab">
+        <h2>Cases</h2>
+        <textarea placeholder="Ongoing investigations and situations..."></textarea>
+    </div>
+
+    <div id="clues" class="tab">
+        <h2>Clues</h2>
+        <textarea placeholder="Interesting observations, hunches, or details..."></textarea>
+    </div>
+
+    <div id="theories" class="tab">
+        <h2>Theories</h2>
+        <textarea placeholder="Speculations, patterns, and possible conclusions..."></textarea>
+    </div>
+
+    <div id="people" class="tab">
+        <h2>People</h2>
+        <textarea placeholder="Details about people involved..."></textarea>
+    </div>
+
+    <div id="places" class="tab">
+        <h2>Places</h2>
+        <textarea placeholder="Important locations and related notes..."></textarea>
+    </div>
+
+    <div id="questions" class="tab">
+        <h2>Questions</h2>
+        <textarea placeholder="Unanswered questions or things to follow up on..."></textarea>
+    </div>
+
+    <div id="reminders" class="tab">
+        <h2>Reminders</h2>
+        <textarea placeholder="Don't forget to..."></textarea>
+    </div>
+
+    <div id="playlist" class="tab">
+        <h2>Playlist</h2>
+        <textarea placeholder="List songs that help you think, feel, or focus..."></textarea>
+    </div>
+
+    <div id="resources" class="tab">
+        <h2>Resources</h2>
+        <textarea placeholder="Useful links, books, podcasts, or videos..."></textarea>
+    </div>
+
+    <div id="Secret Messages" class="tab">
+        <h2>Secret Messages</h2>
+        <div id="messageDisplay" style="height: 300px; overflow-y: scroll; background: rgba(17, 17, 17, 0.8); padding: 10px;">
+            <!-- Messages will appear here -->
+        </div>
+        <textarea id="messageInput" placeholder="Send a message..." style="width: 100%; height: 100px;"></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
 
     <script>
         function showTab(tabId) {
-            // Hide all tabs and remove active class from buttons
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             document.querySelectorAll('.tablink').forEach(btn => {
                 btn.classList.remove('active');
             });
-
-            // Show the selected tab and activate its button
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
         }
 
-        function openTarotReading() {
-            // Open the interactive tarot reading in a new window or tab
-            window.open('https://www.tarot.com/tarot/card-meanings/1-card-tarot-reading', '_blank');
+        // Load the saved messages when the page loads
+        window.onload = function() {
+            displayMessages();
+        };
+
+        // Send a message
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== "") {
+                let messages = JSON.parse(localStorage.getItem('secretMessages')) || [];
+                messages.push(messageText);
+                localStorage.setItem('secretMessages', JSON.stringify(messages));
+                messageInput.value = ""; // Clear the input
+                displayMessages();
+            }
+        }
+
+        // Display the messages
+        function displayMessages() {
+            const messageDisplay = document.getElementById('messageDisplay');
+            const messages = JSON.parse(localStorage.getItem('secretMessages')) || [];
+            messageDisplay.innerHTML = ""; // Clear current messages
+
+            messages.forEach((message, index) => {
+                const messageElement = document.createElement('div');
+                messageElement.innerText = message;
+                messageDisplay.appendChild(messageElement);
+            });
+
+            // Scroll to the bottom of the messages to see the newest one
+            messageDisplay.scrollTop = messageDisplay.scrollHeight;
         }
     </script>
 </body>
