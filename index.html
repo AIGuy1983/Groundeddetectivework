@@ -71,7 +71,7 @@
             resize: vertical;
         }
 
-        /* Hover Effect for Tarot Readings Tab */
+        /* Tarot Readings iframe styling */
         #TarotReadingsContainer {
             display: none;
             position: absolute;
@@ -84,10 +84,6 @@
             z-index: 100;
         }
 
-        .tablink:hover + #TarotReadingsContainer {
-            display: block;
-        }
-
         iframe {
             width: 100%;
             height: 400px;
@@ -98,9 +94,9 @@
 <body>
     <header>Grounded Detective Work</header>
     <nav>
-        <button class="tablink active" onclick="showTab('journal')">Journal</button>
+        <button class="tablink" onclick="showTab('journal')">Journal</button>
         <button class="tablink" onclick="showTab('dreams')">Dreams</button>
-        <button class="tablink" onclick="showTab('Tarot Readings')">Tarot Readings</button>
+        <button class="tablink" onmouseover="showTarotIframe()" onmouseout="hideTarotIframe()" onclick="showTab('Tarot Readings')">Tarot Readings</button>
         <button class="tablink" onclick="showTab('Ancestors')">Ancestors</button>
         <button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
         <button class="tablink" onclick="showTab('notes')">Notes</button>
@@ -116,10 +112,12 @@
         <button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
     </nav>
 
+    <!-- Tarot Readings iframe container -->
     <div id="TarotReadingsContainer">
         <iframe src="https://www.tarot.com/tarot/card-meanings/1-card-tarot-reading" frameborder="0"></iframe>
     </div>
 
+    <!-- Journal tab -->
     <div id="journal" class="tab active">
         <h2>Journal</h2>
         <textarea placeholder="Write your daily thoughts..."></textarea>
@@ -135,14 +133,28 @@
 
     <script>
         function showTab(tabId) {
+            // Hide the iframe for tarot reading when switching tabs
+            document.getElementById('TarotReadingsContainer').style.display = 'none';
+
+            // Hide all tabs and remove active class from buttons
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             document.querySelectorAll('.tablink').forEach(btn => {
                 btn.classList.remove('active');
             });
+
+            // Show the selected tab and activate its button
             document.getElementById(tabId).classList.add('active');
             event.target.classList.add('active');
+        }
+
+        function showTarotIframe() {
+            document.getElementById('TarotReadingsContainer').style.display = 'block';
+        }
+
+        function hideTarotIframe() {
+            document.getElementById('TarotReadingsContainer').style.display = 'none';
         }
     </script>
 </body>
