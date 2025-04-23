@@ -93,6 +93,62 @@
         <button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
     </nav>
 
+    <!-- Homepage -->
+<div id="homepage" style="
+  height: 100vh;
+  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  box-shadow: inset 0 0 100px #0f0f0f;
+  font-family: 'Georgia', serif;
+  color: #e0e0d1;
+">
+  <h1 style="
+    font-size: 3em;
+    color: #d1d1c0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), -1px -1px 2px #556b2f;
+    margin-bottom: 20px;
+  ">
+    Welcome to Grounded Detective Work
+  </h1>
+  <p style="
+    font-size: 1.2em;
+    color: #b0b099;
+    max-width: 600px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  ">
+    A sanctuary for spirals and soul-searching. Follow the clues and feel seen along the way.
+  </p>
+  <button onclick="enterSite()" style="
+    padding: 15px 30px;
+    font-size: 1em;
+    background-color: #3b3b2e;
+    border: 2px solid #c2c2b0;
+    color: #f2f2e6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  "
+    onmouseover="this.style.backgroundColor='#c2c2b0'; this.style.color='#1e1e1e';"
+    onmouseout="this.style.backgroundColor='#3b3b2e'; this.style.color='#f2f2e6';"
+  >
+    Enter
+  </button>
+</div>
+
+<!-- JavaScript to switch views -->
+<script>
+  function enterSite() {
+    document.getElementById('homepage').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+  }
+</script>
+
+
     <div id="journal" class="tab active">
         <h2>Journal</h2>
         <textarea placeholder="Write your daily thoughts..."></textarea>
