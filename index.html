@@ -342,6 +342,27 @@
                 activeButton.classList.add('active');
             }
         }
+	<script>
+    function searchAncestor(event) {
+        event.preventDefault();
+        const first = document.getElementById("firstName").value;
+        const last = document.getElementById("lastName").value;
+        const years = document.getElementById("yearRange").value;
+        const location = document.getElementById("location").value;
+
+        document.getElementById("searchResults").innerHTML = `
+            <p>Searching for <strong>${first} ${last}</strong> 
+            ${years ? "between " + years : ""} 
+            ${location ? "in " + location : ""}...</p>
+            <p><em>(Real search coming soon...)</em></p>
+            <p>Try visiting: 
+            <a href="https://www.familysearch.org/en/" target="_blank">FamilySearch.org</a> 
+            or 
+            <a href="https://www.findagrave.com/" target="_blank">Find a Grave</a> 
+            to start digging.</p>
+        `;
+    }
+</script>
     </script>
 </body>
 </html>
