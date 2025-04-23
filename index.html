@@ -1,80 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Her Mystery Site</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background-color: #0e0e0e;
-      color: #e6e6e6;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #1a1a1a;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #444;
-    }
-    header h1 {
-      font-size: 2em;
-      letter-spacing: 2px;
-      margin: 0;
-    }
-    nav {
-      background-color: #111;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: #d4af37;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #1a1a1a;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grounded Detective Work</title>
+    <style>
+        /* Full screen background */
+        body {
+            background-image: url('images/Lighthouse.jpg');
+            background-size: fit;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            color: white;
+        }
+
+        header {
+            background-color: rgba(17, 17, 17, 0.8); /* Less transparent */
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #333;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: rgba(17, 17, 17, 0.8); /* Less transparent */
+            border-bottom: 1px solid #333;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: #aaa;
+            padding: 14px 18px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        nav button:hover,
+        nav button.active {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+        }
+
+        .tab {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab.active {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            background: rgba(17, 17, 17, 0.8); /* Less transparent */
+            color: #eee;
+            border: 1px solid #444;
+            padding: 10px;
+            font-size: 1em;
+            resize: vertical;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>The Archive</h1>
-  </header>
+    <header>Grounded Detective Work</header>
+    <nav>
+        <button class="tablink active" onclick="showTab('journal')">Journal</button>
+        <button class="tablink" onclick="showTab('dreams')">Dreams</button>
+        <button class="tablink" onclick="showTab('Tarot Readings')">Tarot Readings</button>
+        <button class="tablink" onclick="showTab('Ancestors')">Ancestors</button>
+        <button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
+        <button class="tablink" onclick="showTab('notes')">Notes</button>
+        <button class="tablink" onclick="showTab('cases')">Cases</button>
+        <button class="tablink" onclick="showTab('clues')">Clues</button>
+        <button class="tablink" onclick="showTab('theories')">Theories</button>
+        <button class="tablink" onclick="showTab('people')">People</button>
+        <button class="tablink" onclick="showTab('places')">Places</button>
+        <button class="tablink" onclick="showTab('questions')">Questions</button>
+        <button class="tablink" onclick="showTab('reminders')">Reminders</button>
+        <button class="tablink" onclick="showTab('playlist')">Playlist</button>
+        <button class="tablink" onclick="showTab('resources')">Resources</button>
+        <button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
+    </nav>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#">Detective’s Toolkit</a>
-    <a href="#">Ancestor’s Archive</a>
-    <a href="#">Synchronicity Map</a>
-    <a href="#">Classified Messages</a>
-  </nav>
+    <div id="journal" class="tab active">
+        <h2>Journal</h2>
+        <textarea placeholder="Write your daily thoughts..."></textarea>
+    </div>
 
-  <main>
-    <h2>Welcome, Detective</h2>
-    <p>This is your quiet corner of the universe. A sacred space where spirals slow, clues unfold, and the past whispers in candlelight. You are not alone here. Everything you feel is valid. Everything you seek is safe to explore.</p>
-    <p>Consider this your metaphysical field office. A journal of patterns. A record of the forgotten. A map for the mysteries. The deeper you go, the more the answers will surface.</p>
-    <p>Let's begin where all great stories do: with a little curiosity and a lot of heart.</p>
-  </main>
+    <div id="dreams" class="tab">
+        <h2>Dreams</h2>
+        <textarea placeholder="Record your dreams here..."></textarea>
+    </div>
 
-  <footer>
-    &copy; 2025 Her Mystery Site. Crafted with care and cosmic timing.
-  </footer>
+    <div id="Tarot Readings" class="tab">
+        <h2>Tarot Readings</h2>
+        <iframe src="https://www.facade.com/tarot/" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+    </div>
+
+    <div id="Ancestors" class="tab">
+        <h2>Ancestors</h2>
+        <textarea placeholder="Find your Ancestors here..."></textarea>
+    </div>
+
+    <div id="Graveyards" class="tab">
+        <h2>Graveyards</h2>
+        <textarea placeholder="Find a gravesite here..."></textarea>
+    </div>
+
+    <div id="notes" class="tab">
+        <h2>Notes</h2>
+        <textarea placeholder="General notes and ideas..."></textarea>
+    </div>
+
+    <div id="cases" class="tab">
+        <h2>Cases</h2>
+        <textarea placeholder="Ongoing investigations and situations..."></textarea>
+    </div>
+
+    <div id="clues" class="tab">
+        <h2>Clues</h2>
+        <textarea placeholder="Interesting observations, hunches, or details..."></textarea>
+    </div>
+
+    <div id="theories" class="tab">
+        <h2>Theories</h2>
+        <textarea placeholder="Speculations, patterns, and possible conclusions..."></textarea>
+    </div>
+
+    <div id="people" class="tab">
+        <h2>People</h2>
+        <textarea placeholder="Details about people involved..."></textarea>
+    </div>
+
+    <div id="places" class="tab">
+        <h2>Places</h2>
+        <textarea placeholder="Important locations and related notes..."></textarea>
+    </div>
+
+    <div id="questions" class="tab">
+        <h2>Questions</h2>
+        <textarea placeholder="Unanswered questions or things to follow up on..."></textarea>
+    </div>
+
+    <div id="reminders" class="tab">
+        <h2>Reminders</h2>
+        <textarea placeholder="Don't forget to..."></textarea>
+    </div>
+
+    <div id="playlist" class="tab">
+        <h2>Playlist</h2>
+        <textarea placeholder="List songs that help you think, feel, or focus..."></textarea>
+    </div>
+
+    <div id="resources" class="tab">
+        <h2>Resources</h2>
+        <textarea placeholder="Useful links, books, podcasts, or videos..."></textarea>
+    </div>
+
+    <div id="Secret Messages" class="tab">
+        <h2>Secret Messages</h2>
+        <div id="messageDisplay" style="height: 300px; overflow-y: scroll; background: rgba(17, 17, 17, 0.8); padding: 10px;">
+            <!-- Messages will appear here -->
+        </div>
+        <textarea id="messageInput" placeholder="Send a message..." style="width: 100%; height: 100px;"></textarea>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAXLE2SpM5ol1gHc-jn_g5tYZ4AqeZBZ9I",
+            authDomain: "gdw1-282c6.firebaseapp.com",
+            projectId: "gdw1-282c6",
+            storageBucket: "gdw1-282c6.firebasestorage.app",
+            messagingSenderId: "65065079324",
+            appId: "1:65065079324:web:4a668fb308cebc382645d9",
+            measurementId: "G-MVYRW8Y3Z2"
+        };
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database(app);
+
+        // Function to send a message to Firebase
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== "") {
+                const messagesRef = database.ref('messages');
+                messagesRef.push({
+                    text: messageText,
+                    timestamp: Date.now()
+                });
+                messageInput.value = ""; // Clear the input
+            }
+        }
+
+        // Function to load messages from Firebase
+        function displayMessages() {
+            const messageDisplay = document.getElementById('messageDisplay');
+            const messagesRef = database.ref('messages');
+            messagesRef.on('value', (snapshot) => {
+                const messages = snapshot.val();
+                messageDisplay.innerHTML = "";
+                for (let key in messages) {
+                    const message = messages[key];
+                    const messageDiv = document.createElement('div');
+                    messageDiv.textContent = message.text;
+                    messageDisplay.appendChild(messageDiv);
+                }
+            });
+        }
+
+        // Call displayMessages when the page loads
+        window.onload = function() {
+            displayMessages();
+        };
+
+        // Function to show the corresponding tab
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const tabLinks = document.querySelectorAll('.tablink');
+
+            tabs.forEach((tab) => {
+                tab.classList.remove('active');
+            });
+
+            tabLinks.forEach((button) => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            const activeButton = Array.from(tabLinks).find(button => button.textContent === tabName);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
