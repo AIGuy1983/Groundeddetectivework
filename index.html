@@ -167,10 +167,29 @@
     document.getElementById('mainContent').style.display = 'block';
   }
 </script>
-    <div id="Ancestors" class="tab active">
-        <h2>Ancestors</h2>
-        <textarea placeholder="Find your Ancestors here..."></textarea>
-    </div>
+    <div id="ancestors" style="padding: 30px;">
+    <h2 style="font-family: 'Cinzel Decorative', cursive; color: darkred;">🔍 Begin the Bloodline Search</h2>
+    <p>Enter the details you know and begin unraveling your ancestral story...</p>
+    
+    <form id="ancestorForm" onsubmit="searchAncestor(event)">
+        <label>First Name:</label><br>
+        <input type="text" id="firstName"><br><br>
+
+        <label>Last Name:</label><br>
+        <input type="text" id="lastName"><br><br>
+
+        <label>Year Range:</label><br>
+        <input type="text" id="yearRange" placeholder="e.g., 1800-1900"><br><br>
+
+        <label>Location (optional):</label><br>
+        <input type="text" id="location"><br><br>
+
+        <button type="submit">🔎 Search</button>
+    </form>
+
+    <div id="searchResults" style="margin-top: 20px;"></div>
+</div>
+
 
     <div id="Graveyards" class="tab">
         <h2>Graveyards</h2>
