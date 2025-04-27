@@ -170,8 +170,9 @@ function showTab(tabId, element) {
 function drawTarot() {
   document.getElementById('tarotResult').innerHTML = "You drew the 'Mystic Vision' card!";
 }
-<footer style="position: relative; overflow: hidden; height: 80px; margin-top: 40px; background-color: rgba(0, 0, 0, 0.7); border-top: 1px solid #333;">
-  <div style="position: absolute; white-space: nowrap; animation: sharkSwim 16s ease-in-out infinite alternate; color: red; font-size: 1em; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; font-style: italic;">
+
+<footer style="position: relative; overflow: hidden; height: 100px; margin-top: 40px; background-color: rgba(0, 0, 0, 0.7); border-top: 1px solid #333;">
+  <div style="position: absolute; white-space: nowrap; animation: sharkPace 30s linear infinite; color: red; font-size: 1.2em; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; font-style: italic;">
     Dedicated to my little shark.
   </div>
 </footer>
@@ -179,26 +180,14 @@ function drawTarot() {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-@keyframes sharkSwim {
+@keyframes sharkPace {
   0% {
-    left: -15%;
-    transform: translateY(0px);
-  }
-  25% {
-    transform: translateY(-5px);
-  }
-  50% {
-    transform: translateY(0px);
-  }
-  75% {
-    transform: translateY(5px);
+    left: -50%;
   }
   100% {
-    left: 115%;
-    transform: translateY(0px);
+    left: 100%;
   }
 }
 </style>
-
 </body>
 </html>
