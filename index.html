@@ -86,7 +86,7 @@
     <nav>
         <button class="tablink active" onclick="showTab('Ancestors')">Ancestors</button>
         <button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
-        <button class="tablink" active="showTab('Tarot Readings')">Tarot Readings</button>
+        <button class="tablink" active" onclick="showTab('Tarot Readings')">Tarot Readings</button>
         <button class="tablink" onclick="showTab('journal')">Journal</button>
         <button class="tablink" onclick="showTab('dreams')">Dreams</button>
         <button class="tablink" onclick="showTab('notes')">Notes</button>
@@ -198,7 +198,7 @@
     <h2 style="color: darkred; font-size: 2.5em; margin-bottom: 20px;">Reveal the Shadows</h2>
     <p style="margin-bottom: 30px;">Focus your energy. When you're ready, draw your card(s)...</p>
 
-    <button onclick="drawTarot()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Draw Tarot Card</button>
+    <button active="drawTarot()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Draw Tarot Card</button>
 
     <div id="tarotResult" style="margin-top: 40px;"></div>
 </div>
@@ -364,16 +364,6 @@
             to start digging.</p>
         `;
     }
-</script>
-        <script>
-        <div id="tarot" style="background-color: #0e0e0e; color: #eee; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-align: center;">
-    <h2 style="color: darkred; font-size: 2.5em; margin-bottom: 20px;">Reveal the Shadows</h2>
-    <p style="margin-bottom: 30px;">Focus your energy. When you're ready, draw your card(s)...</p>
 
-    <button onclick="drawTarot()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Draw Tarot Card</button>
-
-    <div id="tarotResult" style="margin-top: 40px;"></div>
-</section>
-    </script>
 </body>
 </html>
