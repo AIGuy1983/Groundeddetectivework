@@ -1,369 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grounded Detective Work</title>
-    <!-- Google Fonts: Gothic Style -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-    <style>
-        /* Full screen background */
-        body {
-            background-image: url('images/Lighthouse.jpg');
-            background-size: fit;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            color: white;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grounded Detective Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('images/Lighthouse.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      color: white;
+    }
 
     header {
-        background-color: rgba(17, 17, 17, 0.8); /* Less transparent */
-        padding: 20px;
-        text-align: center;
-        font-size: 2em;
-        letter-spacing: 2px;
-        border-bottom: 2px solid #333;
-        color: #8B0000; /* Deep gothic red */
-        text-shadow: 1px 1px 3px #000; /* Soft eerie glow */
-        font-family: 'Cinzel Decorative', serif;
+      background-color: rgba(17, 17, 17, 0.8);
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      letter-spacing: 2px;
+      border-bottom: 2px solid #333;
+      color: #8B0000;
+      text-shadow: 1px 1px 3px #000;
+      font-family: 'Cinzel Decorative', serif;
     }
 
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            background-color: rgba(17, 17, 17, 0.8); /* Less transparent */
-            border-bottom: 1px solid #333;
-        }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: rgba(17, 17, 17, 0.8);
+      border-bottom: 1px solid #333;
+    }
 
-        nav a {
-            font-family: 'Cinzel Decorative', serif;
-        }
+    nav button {
+      background: none;
+      border: none;
+      color: #aaa;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-size: 1em;
+      font-family: 'Cinzel Decorative', serif;
+      transition: color 0.3s;
+    }
 
-        nav button {
-            background: none;
-            border: none;
-            color: #aaa;
-            padding: 14px 18px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: color 0.3s;
-        }
+    nav button:hover,
+    nav button.active {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
 
-        nav button:hover,
-        nav button.active {
-            color: #fff;
-            border-bottom: 2px solid #fff;
-        }
+    .tab {
+      display: none;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
 
-        .tab {
-            display: none;
-            padding: 20px;
-        }
+    .tab.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .tab.active {
-            display: block;
-        }
-
-        textarea {
-            width: 100%;
-            height: 400px;
-            background: rgba(17, 17, 17, 0.8); /* Less transparent */
-            color: #eee;
-            border: 1px solid #444;
-            padding: 10px;
-            font-size: 1em;
-            resize: vertical;
-        }
-    </style>
+    textarea {
+      width: 100%;
+      height: 400px;
+      background: rgba(17, 17, 17, 0.8);
+      color: #eee;
+      border: 1px solid #444;
+      padding: 10px;
+      font-size: 1em;
+      resize: vertical;
+    }
+  </style>
 </head>
 <body>
-    <header>Grounded Detective Work</header>
-    <nav>
-        <button class="tablink active" onclick="showTab('Ancestors')">Ancestors</button>
-        <button class="tablink" onclick="showTab('Graveyards')">Graveyards</button>
-        <button class="tablink" active" onclick="showTab('Tarot Readings')">Tarot Readings</button>
-        <button class="tablink" onclick="showTab('journal')">Journal</button>
-        <button class="tablink" onclick="showTab('dreams')">Dreams</button>
-        <button class="tablink" onclick="showTab('notes')">Notes</button>
-        <button class="tablink" onclick="showTab('cases')">Cases</button>
-        <button class="tablink" onclick="showTab('clues')">Clues</button>
-        <button class="tablink" onclick="showTab('theories')">Theories</button>
-        <button class="tablink" onclick="showTab('people')">People</button>
-        <button class="tablink" onclick="showTab('places')">Places</button>
-        <button class="tablink" onclick="showTab('questions')">Questions</button>
-        <button class="tablink" onclick="showTab('reminders')">Reminders</button>
-        <button class="tablink" onclick="showTab('playlist')">Playlist</button>
-        <button class="tablink" onclick="showTab('resources')">Resources</button>
-        <button class="tablink" onclick="showTab('Secret Messages')">Secret Messages</button>
-    </nav>
 
-<!-- Homepage -->
-<div id="homepage" style="
-  height: 100vh;
-  background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  box-shadow: inset 0 0 100px #0f0f0f;
-  font-family: 'Cinzel Decorative', cursive;
-  color: #e0e0d1;
-">
-  <h1 style="
-    font-size: 3em;
-    color: darkred;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    margin-bottom: 20px;
-  ">
-    Welcome to Grounded Detective Work
-  </h1>
-  <p style="
-    font-size: 1.2em;
-    color: #b0b099;
-    max-width: 600px;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  ">
-    Every clue matters. Every whisper from the past has meaning. Are you ready to investigate what others overlook?
-  </p>
-  <p style="
-    font-size: 1em;
-    color: #a8a88c;
-    max-width: 500px;
-    margin-bottom: 30px;
-    font-style: italic;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  ">
-    The cemetery is quiet. The answers are waiting. Let’s begin.
-  </p>
-  <button onclick="enterSite()" style="
-    padding: 15px 30px;
-    font-size: 1em;
-    background-color: #3b3b2e;
-    border: 2px solid #c2c2b0;
-    color: #f2f2e6;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Cinzel Decorative', cursive;
-  "
-    onmouseover="this.style.backgroundColor='#c2c2b0'; this.style.color='#1e1e1e';"
-    onmouseout="this.style.backgroundColor='#3b3b2e'; this.style.color='#f2f2e6';"
-  >
-    Enter
-  </button>
+<header>Grounded Detective Work</header>
+
+<nav>
+  <button class="tablink active" onclick="showTab('Ancestors', this)">Ancestors</button>
+  <button class="tablink" onclick="showTab('Graveyards', this)">Graveyards</button>
+  <button class="tablink" onclick="showTab('Tarot', this)">Tarot Readings</button>
+  <button class="tablink" onclick="showTab('Journal', this)">Journal</button>
+  <button class="tablink" onclick="showTab('Dreams', this)">Dreams</button>
+  <button class="tablink" onclick="showTab('Notes', this)">Notes</button>
+  <button class="tablink" onclick="showTab('Cases', this)">Cases</button>
+  <button class="tablink" onclick="showTab('Clues', this)">Clues</button>
+  <button class="tablink" onclick="showTab('Theories', this)">Theories</button>
+  <button class="tablink" onclick="showTab('People', this)">People</button>
+  <button class="tablink" onclick="showTab('Places', this)">Places</button>
+  <button class="tablink" onclick="showTab('Questions', this)">Questions</button>
+  <button class="tablink" onclick="showTab('Reminders', this)">Reminders</button>
+  <button class="tablink" onclick="showTab('Playlist', this)">Playlist</button>
+  <button class="tablink" onclick="showTab('Resources', this)">Resources</button>
+  <button class="tablink" onclick="showTab('SecretMessages', this)">Secret Messages</button>
+</nav>
+
+<div id="homepage" style="height: 100vh; background: linear-gradient(145deg, #2d2d2d, #1a1a1a); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; box-shadow: inset 0 0 100px #0f0f0f; font-family: 'Cinzel Decorative', cursive; color: #e0e0d1;">
+  <h1 style="font-size: 3em; color: darkred; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); margin-bottom: 20px;">Welcome to Grounded Detective Work</h1>
+  <p style="font-size: 1.2em; color: #b0b099; max-width: 600px; margin-bottom: 20px; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);">Every clue matters. Every whisper from the past has meaning. Are you ready to investigate what others overlook?</p>
+  <p style="font-size: 1em; color: #a8a88c; max-width: 500px; margin-bottom: 30px; font-style: italic; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">The cemetery is quiet. The answers are waiting. Let’s begin.</p>
+  <button onclick="enterSite()" style="padding: 15px 30px; font-size: 1em; background-color: #3b3b2e; border: 2px solid #c2c2b0; color: #f2f2e6; cursor: pointer; transition: all 0.3s ease; font-family: 'Cinzel Decorative', cursive;" onmouseover="this.style.backgroundColor='#c2c2b0'; this.style.color='#1e1e1e';" onmouseout="this.style.backgroundColor='#3b3b2e'; this.style.color='#f2f2e6';">Enter</button>
 </div>
 
-<!-- JavaScript to switch views -->
+<div id="mainContent" style="display:none;">
+
+<!-- Only showing some tabs here for example, you’ll have all your tabs here -->
+
+<div id="Ancestors" class="tab active" style="background: url('images/Cool ying yang.jpg') center/cover no-repeat; color: #fff; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-shadow: 2px 2px 4px #000;">
+  <div style="background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 700px; margin: auto; border: 1px solid #444;">
+    <h2 style="text-align: center; color: darkred; font-size: 2.5em;">Whispers of the Past</h2>
+    <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">Step into the mist and search for echoes of those who came before you...</p>
+    <form id="ancestorSearch" style="display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" placeholder="Full Name (First & Last)" style="padding: 10px; border: none; border-radius: 5px; background-color: #222; color: #eee;">
+      <input type="text" placeholder="Birth Year Range (e.g. 1800-1900)" style="padding: 10px; border: none; border-radius: 5px; background-color: #222; color: #eee;">
+      <input type="text" placeholder="Location (City, State, Country)" style="padding: 10px; border: none; border-radius: 5px; background-color: #222; color: #eee;">
+      <button type="submit" style="margin-top: 20px; padding: 12px; font-size: 1em; background-color: darkred; color: white; border: none; border-radius: 5px; cursor: pointer; text-shadow: none;">🔍 Uncover Ancestors</button>
+    </form>
+    <div id="ancestorResults" style="margin-top: 40px; display: none;">
+      <p style="text-align: center; color: #aaa;">Your ancestor tombstones will rise here from the mist...</p>
+    </div>
+  </div>
+</div>
+
+<div id="Graveyards" class="tab">
+  <h2>Graveyards</h2>
+  <textarea placeholder="Find a gravesite here..."></textarea>
+</div>
+
+<div id="Tarot" class="tab" style="background-color: #0e0e0e; color: #eee; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-align: center;">
+  <h2 style="color: darkred; font-size: 2.5em; margin-bottom: 20px;">Reveal the Shadows</h2>
+  <p style="margin-bottom: 30px;">Focus your energy. When you're ready, draw your card(s)...</p>
+  <button onclick="drawTarot()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Draw Tarot Card</button>
+  <div id="tarotResult" style="margin-top: 40px;"></div>
+</div>
+
+<!-- etc etc... all your other tabs -->
+</div>
+
 <script>
-  function enterSite() {
-    document.getElementById('homepage').style.display = 'none';
-    document.getElementById('mainContent').style.display = 'block';
-  }
+function enterSite() {
+  document.getElementById('homepage').style.display = 'none';
+  document.getElementById('mainContent').style.display = 'block';
+}
+
+function showTab(tabId, element) {
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(tab) {
+    tab.classList.remove('active');
+  });
+
+  var tablinks = document.querySelectorAll('.tablink');
+  tablinks.forEach(function(link) {
+    link.classList.remove('active');
+  });
+
+  document.getElementById(tabId).classList.add('active');
+  element.classList.add('active');
+}
+
+function drawTarot() {
+  document.getElementById('tarotResult').innerHTML = "You drew the 'Mystic Vision' card!";
+}
 </script>
-   <div id="ancestors" style="background: url('images/Cool ying yang.jpg') center/cover no-repeat; color: #fff; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-shadow: 2px 2px 4px #000;">
-    <div style="background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 700px; margin: auto; border: 1px solid #444;">
-        <h2 style="text-align: center; color: darkred; font-size: 2.5em;">Whispers of the Past</h2>
-        <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">Step into the mist and search for echoes of those who came before you...</p>
-
-        <form id="ancestorSearch" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" placeholder="Full Name (First & Last)" style="padding: 10px; border: none; border-radius: 5px; background-color: #222; color: #eee;">
-            <input type="text" placeholder="Birth Year Range (e.g. 1800-1900)" style="padding: 10px; border: none; border-radius: 5px; background-color: #222; color: #eee;">
-            <input type="text" placeholder="Location (City, State, Country)" style="padding: 10px; border: none; border-radius: 5px; background-color: #222; color: #eee;">
-
-            <button type="submit" style="margin-top: 20px; padding: 12px; font-size: 1em; background-color: darkred; color: white; border: none; border-radius: 5px; cursor: pointer; text-shadow: none;">
-                🔍 Uncover Ancestors
-            </button>
-        </form>
-
-        <div id="ancestorResults" style="margin-top: 40px; display: none;">
-            <!-- Placeholder for future API results -->
-            <p style="text-align: center; color: #aaa;">Your ancestor tombstones will rise here from the mist...</p>
-        </div>
-    </div>
-</section>
-
-    <div id="Graveyards" class="tab">
-        <h2>Graveyards</h2>
-        <textarea placeholder="Find a gravesite here..."></textarea>
-    </div>
-
-    <div id="tarot" style="background-color: #0e0e0e; color: #eee; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-align: center;">
-    <h2 style="color: darkred; font-size: 2.5em; margin-bottom: 20px;">Reveal the Shadows</h2>
-    <p style="margin-bottom: 30px;">Focus your energy. When you're ready, draw your card(s)...</p>
-
-    <button active="drawTarot()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Draw Tarot Card</button>
-
-    <div id="tarotResult" style="margin-top: 40px;"></div>
-</div>
-
-    <div id="journal" class="tab">
-        <h2>Journal</h2>
-        <textarea placeholder="Write your daily thoughts..."></textarea>
-    </div>
-
-    <div id="dreams" class="tab">
-        <h2>Dreams</h2>
-        <textarea placeholder="Record your dreams here..."></textarea>
-    </div>
-
-    <div id="notes" class="tab">
-        <h2>Notes</h2>
-        <textarea placeholder="General notes and ideas..."></textarea>
-    </div>
-
-    <div id="cases" class="tab">
-        <h2>Cases</h2>
-        <textarea placeholder="Ongoing investigations and situations..."></textarea>
-    </div>
-
-    <div id="clues" class="tab">
-        <h2>Clues</h2>
-        <textarea placeholder="Interesting observations, hunches, or details..."></textarea>
-    </div>
-
-    <div id="theories" class="tab">
-        <h2>Theories</h2>
-        <textarea placeholder="Speculations, patterns, and possible conclusions..."></textarea>
-    </div>
-
-    <div id="people" class="tab">
-        <h2>People</h2>
-        <textarea placeholder="Details about people involved..."></textarea>
-    </div>
-
-    <div id="places" class="tab">
-        <h2>Places</h2>
-        <textarea placeholder="Important locations and related notes..."></textarea>
-    </div>
-
-    <div id="questions" class="tab">
-        <h2>Questions</h2>
-        <textarea placeholder="Unanswered questions or things to follow up on..."></textarea>
-    </div>
-
-    <div id="reminders" class="tab">
-        <h2>Reminders</h2>
-        <textarea placeholder="Don't forget to..."></textarea>
-    </div>
-
-    <div id="playlist" class="tab">
-        <h2>Playlist</h2>
-        <textarea placeholder="List songs that help you think, feel, or focus..."></textarea>
-    </div>
-
-    <div id="resources" class="tab">
-        <h2>Resources</h2>
-        <textarea placeholder="Useful links, books, podcasts, or videos..."></textarea>
-    </div>
-
-    <div id="Secret Messages" class="tab">
-        <h2>Secret Messages</h2>
-        <div id="messageDisplay" style="height: 300px; overflow-y: scroll; background: rgba(17, 17, 17, 0.8); padding: 10px;">
-            <!-- Messages will appear here -->
-        </div>
-        <textarea id="messageInput" placeholder="Send a message..." style="width: 100%; height: 100px;"></textarea>
-        <button onclick="sendMessage()">Send</button>
-    </div>
-
-    <!-- Add Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
-
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyAXLE2SpM5ol1gHc-jn_g5tYZ4AqeZBZ9I",
-            authDomain: "gdw1-282c6.firebaseapp.com",
-            projectId: "gdw1-282c6",
-            storageBucket: "gdw1-282c6.firebasestorage.app",
-            messagingSenderId: "65065079324",
-            appId: "1:65065079324:web:4a668fb308cebc382645d9",
-            measurementId: "G-MVYRW8Y3Z2"
-        };
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app);
-
-        // Function to send a message to Firebase
-        function sendMessage() {
-            const messageInput = document.getElementById('messageInput');
-            const messageText = messageInput.value.trim();
-
-            if (messageText !== "") {
-                const messagesRef = database.ref('messages');
-                messagesRef.push({
-                    text: messageText,
-                    timestamp: Date.now()
-                });
-                messageInput.value = ""; // Clear the input
-            }
-        }
-
-        // Function to load messages from Firebase
-        function displayMessages() {
-            const messageDisplay = document.getElementById('messageDisplay');
-            const messagesRef = database.ref('messages');
-            messagesRef.on('value', (snapshot) => {
-                const messages = snapshot.val();
-                messageDisplay.innerHTML = "";
-                for (let key in messages) {
-                    const message = messages[key];
-                    const messageDiv = document.createElement('div');
-                    messageDiv.textContent = message.text;
-                    messageDisplay.appendChild(messageDiv);
-                }
-            });
-        }
-
-        // Call displayMessages when the page loads
-        window.onload = function() {
-            displayMessages();
-        };
-
-        // Function to show the corresponding tab
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab');
-            const tabLinks = document.querySelectorAll('.tablink');
-
-            tabs.forEach((tab) => {
-                tab.classList.remove('active');
-            });
-
-            tabLinks.forEach((button) => {
-                button.classList.remove('active');
-            });
-
-            document.getElementById(tabName).classList.add('active');
-            const activeButton = Array.from(tabLinks).find(button => button.textContent === tabName);
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
-        }
-	<script>
-    function searchAncestor(event) {
-        event.preventDefault();
-        const first = document.getElementById("firstName").value;
-        const last = document.getElementById("lastName").value;
-        const years = document.getElementById("yearRange").value;
-        const location = document.getElementById("location").value;
-
-        document.getElementById("searchResults").innerHTML = `
-            <p>Searching for <strong>${first} ${last}</strong> 
-            ${years ? "between " + years : ""} 
-            ${location ? "in " + location : ""}...</p>
-            <p><em>(Real search coming soon...)</em></p>
-            <p>Try visiting: 
-            <a href="https://www.familysearch.org/en/" target="_blank">FamilySearch.org</a> 
-            or 
-            <a href="https://www.findagrave.com/" target="_blank">Find a Grave</a> 
-            to start digging.</p>
-        `;
-    }
 
 </body>
 </html>
