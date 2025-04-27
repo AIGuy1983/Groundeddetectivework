@@ -115,7 +115,7 @@
 
 <!-- Only showing some tabs here for example, you’ll have all your tabs here -->
 
-<div id="Ancestors" class="tab active" style="background: url('images/Cool ying yang.jpg') center/cover no-repeat; color: #fff; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-shadow: 2px 2px 4px #000;">
+<div id="Ancestors" class="tab active" style="background: url('images/Cool ying yang.jpg') contain/cover no-repeat; color: #fff; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-shadow: 2px 2px 4px #000;">
   <div style="background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 700px; margin: auto; border: 1px solid #444;">
     <h2 style="text-align: center; color: darkred; font-size: 2.5em;">Whispers of the Past</h2>
     <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">Step into the mist and search for echoes of those who came before you...</p>
@@ -172,7 +172,7 @@ function drawTarot() {
 }
 </script>
 <footer style="position: relative; overflow: hidden; height: 60px; margin-top: 40px; background-color: rgba(0, 0, 0, 0.7); border-top: 1px solid #333;">
-  <div style="position: absolute; white-space: nowrap; animation: sharkGlide 10s ease-in-out infinite alternate; color: #ccc; font-size: 0.9em; font-style: italic;">
+  <div style="position: absolute; white-space: nowrap; animation: sharkGlide 10s ease-in-out infinite alternate, sharkBounce 2s ease-in-out infinite; color: red; font-size: 0.9em; font-family: 'Cursive'; font-style: italic;">
     Dedicated to my little shark.
   </div>
 </footer>
@@ -186,7 +186,15 @@ function drawTarot() {
     left: 110%;
   }
 }
-</style>
 
+@keyframes sharkBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+</style>
 </body>
 </html>
