@@ -137,10 +137,12 @@
 </div>
 
 <div id="Tarot" class="tab" style="background-color: #0e0e0e; color: #eee; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-align: center;">
-  <h2 style="color: darkred; font-size: 2.5em; margin-bottom: 20px;">Reveal the Shadows</h2>
-  <p style="margin-bottom: 30px;">Focus your energy. When you're ready, draw your card(s)...</p>
-  <button onclick="drawTarot()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">Draw Tarot Card</button>
-  <div id="tarotResult" style="margin-top: 40px;"></div>
+  <h2 style="color: darkred; font-size: 2.5em; margin-bottom: 20px;">Past, Present, Future</h2>
+  <p style="margin-bottom: 30px;">Focus your energy on a question or situation... When you're ready, begin your reading.</p>
+  
+  <button onclick="startReading()" style="padding: 10px 20px; background-color: darkred; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer;">🔮 Begin Your Reading</button>
+  
+  <div id="readingResult" style="margin-top: 50px; font-size: 1.2em;"></div>
 </div>
 
 <!-- etc etc... all your other tabs -->
@@ -167,14 +169,68 @@ function showTab(tabId, element) {
   element.classList.add('active');
 }
 
-function drawTarot() {
-  document.getElementById('tarotResult').innerHTML = "You drew the 'Mystic Vision' card!";
+function startReading() {
+  const deck = [
+    { name: "The Fool", meaning: "New beginnings, spontaneity, a free spirit." },
+    { name: "The Magician", meaning: "Power, skill, concentration, action, resourcefulness." },
+    { name: "The High Priestess", meaning: "Intuition, unconscious knowledge, mystery." },
+    { name: "The Empress", meaning: "Fertility, beauty, nature, nurturing, abundance." },
+    { name: "The Emperor", meaning: "Authority, structure, control, fatherhood." },
+    { name: "The Hierophant", meaning: "Tradition, conformity, morality, ethics." },
+    { name: "The Lovers", meaning: "Love, union, relationships, choices." },
+    { name: "The Chariot", meaning: "Control, willpower, victory, assertion." },
+    { name: "Strength", meaning: "Courage, persuasion, influence, compassion." },
+    { name: "The Hermit", meaning: "Soul-searching, introspection, being alone." },
+    { name: "Wheel of Fortune", meaning: "Good luck, karma, life cycles, destiny." },
+    { name: "Justice", meaning: "Fairness, truth, law, cause and effect." },
+    { name: "The Hanged Man", meaning: "Pause, surrender, letting go, new perspective." },
+    { name: "Death", meaning: "Endings, transformation, transition, rebirth." },
+    { name: "Temperance", meaning: "Balance, moderation, purpose, meaning." },
+    { name: "The Devil", meaning: "Addiction, materialism, playfulness, bondage." },
+    { name: "The Tower", meaning: "Sudden change, upheaval, chaos, awakening." },
+    { name: "The Star", meaning: "Hope, inspiration, serenity." },
+    { name: "The Moon", meaning: "Illusion, fear, anxiety, subconscious." },
+    { name: "The Sun", meaning: "Joy, success, celebration, positivity." },
+    { name: "Judgement", meaning: "Reflection, reckoning, inner calling." },
+    { name: "The World", meaning: "Completion, accomplishment, travel." }
+  ];
+
+  // Shuffle the deck
+  const shuffled = deck.sort(() => Math.random() - 0.5);
+
+  // Draw three cards
+  const pastCard = shuffled[0];
+  const presentCard = shuffled[1];
+  const futureCard = shuffled[2];
+
+  // Randomly decide if each is reversed
+  const pastReversed = Math.random() > 0.5;
+  const presentReversed = Math.random() > 0.5;
+  const futureReversed = Math.random() > 0.5;
+
+  // Build the reading
+  const readingHTML = `
+    <div style="margin-bottom: 40px;">
+      <h3 style="color: goldenrod;">Past</h3>
+      <p><strong>${pastCard.name} ${pastReversed ? '(Reversed)' : ''}</strong></p>
+      <p>${pastReversed ? '⚡ Shadow Meaning: ' : '✨ Upright Meaning: '}${pastCard.meaning}</p>
+    </div>
+    <div style="margin-bottom: 40px;">
+      <h3 style="color: goldenrod;">Present</h3>
+      <p><strong>${presentCard.name} ${presentReversed ? '(Reversed)' : ''}</strong></p>
+      <p>${presentReversed ? '⚡ Shadow Meaning: ' : '✨ Upright Meaning: '}${presentCard.meaning}</p>
+    </div>
+    <div style="margin-bottom: 40px;">
+      <h3 style="color: goldenrod;">Future</h3>
+      <p><strong>${futureCard.name} ${futureReversed ? '(Reversed)' : ''}</strong></p>
+      <p>${futureReversed ? '⚡ Shadow Meaning: ' : '✨ Upright Meaning: '}${futureCard.meaning}</p>
+    </div>
+  `;
+
+  // Display the reading
+  document.getElementById('readingResult').innerHTML = readingHTML;
 }
-</script>
-<footer style="position: relative; overflow: hidden; height: 60px; margin-top: 40px; background-color: rgba(0, 0, 0, 0.7); border-top: 1px solid #333;">
-  <div style="position: absolute; white-space: nowrap; animation: sharkGlide 10s ease-in-out infinite alternate, sharkBounce 2s ease-in-out infinite; color: red; font-size: 0.9em; font-family: 'Cursive'; font-style: italic;">
-    Dedicated to my little shark.
-  </div>
+
 </footer>
 
 <style>
