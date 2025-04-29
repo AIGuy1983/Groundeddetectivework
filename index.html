@@ -86,7 +86,7 @@
 <header>Grounded Detective Work</header>
 
 <nav>
-  <button class="tablink active" onclick="showTab('Ancestors', this)">Ancestors</button>
+  <button class="tablink" onclick="showTab('Ancestors', this)">Ancestors</button>
   <button class="tablink" onclick="showTab('Graveyards', this)">Graveyards</button>
   <button class="tablink" onclick="showTab('Tarot', this)">Tarot Readings</button>
   <button class="tablink" onclick="showTab('Journal', this)">Journal</button>
@@ -115,7 +115,7 @@
 
 <!-- Only showing some tabs here for example, you’ll have all your tabs here -->
 
-<div id="Ancestors" class="tab active" style="background:; color: #fff; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-shadow: 2px 2px 4px #000;">
+<div id="Ancestors" class="tab" style="background:; color: #fff; padding: 50px 20px; font-family: 'Cinzel Decorative', serif; text-shadow: 2px 2px 4px #000;">
   <div style="background-color: rgba(0, 0, 0, 0.7); padding: 30px; border-radius: 10px; max-width: 700px; margin: auto; border: 1px solid #444;">
     <h2 style="text-align: center; color: darkred; font-size: 2.5em;">Whispers of the Past</h2>
     <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">Step into the mist and search for echoes of those who came before you...</p>
@@ -152,6 +152,8 @@
 function enterSite() {
   document.getElementById('homepage').style.display = 'none';
   document.getElementById('mainContent').style.display = 'block';
+  // After showing mainContent, activate Ancestors tab
+  showTab('Ancestors', document.querySelector("button[onclick*='Ancestors']"));
 }
 
 function showTab(tabId, element) {
