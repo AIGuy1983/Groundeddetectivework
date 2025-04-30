@@ -81,6 +81,12 @@
     }
   </style>
 </head>
+<footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: rgba(0, 0, 0, 0.7); color: #aaa; font-family: 'Arial', sans-serif;">
+  Dedicated to my little shark 
+  <span style="position: relative; display: inline-block;">
+    <span style="position: absolute; left: -10%; animation: sharkGlide 15s linear infinite, sharkBounce 1s ease-in-out infinite;">🦈</span>
+  </span>
+</footer>
 <body>
 
 <header>Grounded Detective Work</header>
@@ -149,11 +155,20 @@
 </div>
 
 <script>
+// Prevent form submission (causing reload)
+document.getElementById('ancestorSearch')?.addEventListener('submit', (e) => {
+  e.preventDefault(); 
+  // Optional: Add ancestor search logic here
+});
+
+// Ensure Enter button works even if DOM isn't fully ready
 function enterSite() {
   document.getElementById('homepage').style.display = 'none';
   document.getElementById('mainContent').style.display = 'block';
-  // After showing mainContent, activate Ancestors tab
-  showTab('Ancestors', document.querySelector("button[onclick*='Ancestors']"));
+  // Explicitly target the first tab button if querySelector fails
+  const firstTabBtn = document.querySelector("button[onclick*='Ancestors']") || 
+                      document.querySelector(".tablink");
+  if (firstTabBtn) showTab('Ancestors', firstTabBtn);
 }
 
 function showTab(tabId, element) {
@@ -232,7 +247,6 @@ function startReading() {
   // Display the reading
   document.getElementById('readingResult').innerHTML = readingHTML;
 }
-
 </footer>
 
 <style>
@@ -254,5 +268,5 @@ function startReading() {
   }
 }
 </style>
-</body>
+</body> 
 </html>
