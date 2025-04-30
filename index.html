@@ -81,12 +81,6 @@
     }
   </style>
 </head>
-<footer style="position: fixed; bottom: 0; width: 100%; text-align: center; padding: 10px; background-color: rgba(0, 0, 0, 0.7); color: #aaa; font-family: 'Arial', sans-serif;">
-  Dedicated to my little shark 
-  <span style="position: relative; display: inline-block;">
-    <span style="position: absolute; left: -10%; animation: sharkGlide 15s linear infinite, sharkBounce 1s ease-in-out infinite;">🦈</span>
-  </span>
-</footer>
 <body>
 
 <header>Grounded Detective Work</header>
@@ -155,6 +149,37 @@
 </div>
 
 <script>
+<footer style="
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #aaa;
+  font-family: 'Arial', sans-serif;
+">
+  Dedicated to my little shark 
+  <span style="position: relative; display: inline-block; width: 100%;">
+    <span style="
+      position: absolute;
+      animation: sharkGlide 15s linear infinite, 
+                sharkBounce 1s ease-in-out infinite;
+    ">🦈</span>
+  </span>
+</footer>
+
+<style>
+  @keyframes sharkGlide {
+    0% { left: -10%; }
+    100% { left: 110%; }
+  }
+  @keyframes sharkBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>
+
 // Prevent form submission (causing reload)
 document.getElementById('ancestorSearch')?.addEventListener('submit', (e) => {
   e.preventDefault(); 
@@ -247,27 +272,7 @@ function startReading() {
   // Display the reading
   document.getElementById('readingResult').innerHTML = readingHTML;
 }
-</footer>
 
-<style>
-@keyframes sharkGlide {
-  0% {
-    left: -10%;
-  }
-  100% {
-    left: 110%;
-  }
-}
-
-@keyframes sharkBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-</footer>
 </style>
 </body> 
 </html>
